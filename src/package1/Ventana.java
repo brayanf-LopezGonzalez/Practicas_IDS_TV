@@ -5,7 +5,9 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -40,11 +42,15 @@ public class Ventana extends JFrame{
 		
 		JPanel ventanaPanel = new JPanel();
 		
+		//------------------- COLOR DE FONDO ------------------------------------------
+		
 		ventanaPanel.setBackground(Color.decode("#feefda"));
 		ventanaPanel.setOpaque(true);
 		ventanaPanel.setSize(500,500);
 		ventanaPanel.setLocation(0,0);
 		ventanaPanel.setLayout(null);
+		
+		//------------------- ENCABEZADO DEL PANEL ----------------------------------
 		
 		JLabel etiqueta1 = new JLabel("Registro de usuario");
 		etiqueta1.setSize(200,60);
@@ -55,6 +61,8 @@ public class Ventana extends JFrame{
 		etiqueta1.setFont(new Font("Corbel", Font.BOLD, 24));	
 		ventanaPanel.add(etiqueta1);
 		
+		
+		//------------------- OPCIONES LADO IZQUIERDO DEL PANEL -------------------
 		JLabel etiqueta2 = new JLabel("Nombre de usuario:");
 		etiqueta2.setSize(200, 30);
 		etiqueta2.setLocation(40, 100);
@@ -64,7 +72,7 @@ public class Ventana extends JFrame{
 		JTextField usuario = new JTextField();
 		usuario.setSize(290, 30);
 		usuario.setLocation(40, 130);
-		usuario.setFont(new Font("Corbel", Font.BOLD, 18));	
+		usuario.setFont(new Font("Corbel", Font.BOLD, 18));
 		ventanaPanel.add(usuario);
 		
 		JLabel etiqueta3 = new JLabel("Correo electronico:");
@@ -103,48 +111,7 @@ public class Ventana extends JFrame{
 		sexos.setLocation(100,350);
 		ventanaPanel.add(sexos);
 		
-		
-		
-		JRadioButton opcion1 = new JRadioButton("Aceptar");
-		opcion1.setSize(70,20);
-		opcion1.setLocation(230, 610);
-		opcion1.setOpaque(false);
-		ventanaPanel.add(opcion1);
-		
-		JRadioButton opcion2 = new JRadioButton("Rechazar");
-		opcion2.setSize(80,20);
-		opcion2.setLocation(390, 610);
-		opcion2.setOpaque(false);
-		ventanaPanel.add(opcion2);
-		
-		
-		ButtonGroup grupo1 = new ButtonGroup();	
-		grupo1.add(opcion1);
-		grupo1.add(opcion2);
-		
-		
-		
-		JCheckBox casilla = new JCheckBox("Mantener sesion iniciada");
-		casilla.setSize(200, 30);
-		casilla.setOpaque(false);
-		casilla.setLocation(130, 660);
-		casilla.setFont(new Font("Corbel", Font.BOLD, 12));	
-		ventanaPanel.add(casilla);
-		
-		JLabel olvidada = new JLabel("<html><u>¿Has olvidado la contraseña?</u></html>");//subraya texto
-		olvidada.setForeground(Color.BLUE);//color para simular un hipervinculo
-		olvidada.setCursor(new Cursor(Cursor.HAND_CURSOR));//aqui se cambia la forma del cursor al tocar el texto
-		olvidada.setSize(200, 30);
-		olvidada.setLocation(370, 660);
-		olvidada.setFont(new Font("Corbel", Font.BOLD, 12));	
-		ventanaPanel.add(olvidada);
-		
-		JButton inicioSesion = new JButton("CREAR CUENTA");
-		inicioSesion.setSize(200, 30);
-		inicioSesion.setLocation(250, 700);
-		inicioSesion.setFont(new Font("Corbel", Font.BOLD, 19));	
-		ventanaPanel.add(inicioSesion);
-		
+		//-------------------- OPCIONES LADO DERECHO ----------------------------
 		JLabel etiqueta5 = new JLabel("Preferencias de contenido:");
 		etiqueta5.setSize(220, 30);
 		etiqueta5.setLocation(380, 100);
@@ -193,6 +160,7 @@ public class Ventana extends JFrame{
 		preferencia6.setFont(new Font("Corbel", Font.BOLD, 16));	
 		ventanaPanel.add(preferencia6);
 		
+		//------------------ BIOGRAFIA -------------------------------------------
 		JLabel bio = new JLabel("Biografia:");
 		bio.setSize(200, 30);
 		bio.setLocation(40, 410);
@@ -207,18 +175,53 @@ public class Ventana extends JFrame{
 		biografia.setWrapStyleWord(true);
 		ventanaPanel.add(biografia);
 		
+		//------------------ TERMINOS Y CONDICIONES  ------------------------------------
+		
 		JButton terminos = new JButton("Terminos y condiciones");
 		terminos.setSize(200, 30);
 		terminos.setLocation(250, 570);
 		terminos.setFont(new Font("Corbel", Font.BOLD, 13));	
 		ventanaPanel.add(terminos);
 		
+		JRadioButton opcion1 = new JRadioButton("Aceptar");
+		opcion1.setSize(70,20);
+		opcion1.setLocation(230, 610);
+		opcion1.setOpaque(false);
+		ventanaPanel.add(opcion1);
 		
+		JRadioButton opcion2 = new JRadioButton("Rechazar");
+		opcion2.setSize(80,20);
+		opcion2.setLocation(390, 610);
+		opcion2.setOpaque(false);
+		ventanaPanel.add(opcion2);
+				
+		ButtonGroup grupo1 = new ButtonGroup();	
+		grupo1.add(opcion1);
+		grupo1.add(opcion2);
+		
+		//--------------------- OPCIONES INFERIORES DEL PANEL -----------------------------------
+		JCheckBox casilla = new JCheckBox("Mantener sesion iniciada");
+		casilla.setSize(200, 30);
+		casilla.setOpaque(false);
+		casilla.setLocation(130, 660);
+		casilla.setFont(new Font("Corbel", Font.BOLD, 12));	
+		ventanaPanel.add(casilla);
+		
+		JLabel olvidada = new JLabel("<html><u>¿Has olvidado la contraseña?</u></html>");//subraya texto
+		olvidada.setForeground(Color.BLUE);//color para simular un hipervinculo
+		olvidada.setCursor(new Cursor(Cursor.HAND_CURSOR));//aqui se cambia la forma del cursor al tocar el texto
+		olvidada.setSize(200, 30);
+		olvidada.setLocation(370, 660);
+		olvidada.setFont(new Font("Corbel", Font.BOLD, 12));	
+		ventanaPanel.add(olvidada);
+		
+		JButton inicioSesion = new JButton("CREAR CUENTA");
+		inicioSesion.setSize(200, 30);
+		inicioSesion.setLocation(250, 700);
+		inicioSesion.setFont(new Font("Corbel", Font.BOLD, 19));	
+		ventanaPanel.add(inicioSesion);
 		
 		return ventanaPanel;
 	}
-	
-	
-	
 
 }
