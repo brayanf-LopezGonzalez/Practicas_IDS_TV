@@ -7,8 +7,10 @@ public class Main {
 		
 		//Ventana Ventana = new Ventana();
 		
-		Calculadora Calculadora = new Calculadora();
-
+		//Calculadora Calculadora = new Calculadora();
+		
+		Interfaz Interfaz = new Interfaz();
+		
 	}
 
 }

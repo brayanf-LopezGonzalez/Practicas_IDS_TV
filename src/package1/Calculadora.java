@@ -77,6 +77,7 @@ public class Calculadora extends JFrame{
 		
 		
 		
+		
 		return ventanaPanel;
 	}
 
