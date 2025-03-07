@@ -1,9 +1,12 @@
 package package1;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -34,7 +37,7 @@ public class Ventana extends JFrame{
 		this.setMaximumSize(new Dimension(800,800));
 		this.setMinimumSize(new Dimension(400,400));
 		
-		this.add(this.login());
+//		this.add(this.login());
 		this.repaint();
 	}
 	
@@ -224,4 +227,30 @@ public class Ventana extends JFrame{
 		return ventanaPanel;
 	}
 
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		Graphics2D g2d = (Graphics2D) g.create();
+		g2d.setStroke(new BasicStroke(5));
+		
+		g2d.drawRect(100, 100, 80, 80);
+		
+		g2d.setColor(Color.ORANGE);
+		
+		g2d.fillRect(120, 120, 80, 80);
+		
+		g2d.setColor(Color.GREEN);
+		
+		g2d.setFont(new Font("American Tyoewriter", Font.BOLD,28));
+		
+		g2d.drawString("Eso tilin", 150, 200);
+		
+		g2d.setColor(Color.GREEN);
+		
+		g2d.drawLine(30, 30, 500, 500);
+		
+		
+		
+	}
 }

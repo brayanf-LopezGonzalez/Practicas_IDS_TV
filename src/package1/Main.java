@@ -5,11 +5,11 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		//Ventana Ventana = new Ventana();
+		Ventana Ventana = new Ventana();
 		
 		//Calculadora Calculadora = new Calculadora();
 		
-		Interfaz Interfaz = new Interfaz();
+		//Interfaz Interfaz = new Interfaz();
 		
 	}
 
