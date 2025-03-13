@@ -22,6 +22,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -235,16 +236,20 @@ public class Ventana extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				boolean frag1 = false, frag2 = false, frag3 = false, frag4 = false;
+				
 				if(usuario.getText().equals("")) {
 					usuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
 				}else {
 					usuario.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+					frag1 = true;
 				}
 				
 				if(email.getText().equals("")) {
 					email.setBorder(BorderFactory.createLineBorder(Color.red,3));
 				} else {
 					email.setBorder(BorderFactory.createLineBorder(Color.green,3));
+					frag2 = true;
 				}
 				
 				String myPassword = new String (password.getPassword());
@@ -253,11 +258,34 @@ public class Ventana extends JFrame{
 					password.setBorder(BorderFactory.createLineBorder(Color.red,3));
 				} else {
 					password.setBorder(BorderFactory.createLineBorder(Color.green,3));
+					frag3 = true;
 				}
 				
 				if(opcion2.isSelected()) {
-					System.out.println("Debe aceptar los terminos y condiciones");
+					Object[] options = { "OK"};
+					JOptionPane.showOptionDialog(null, "Debe aceptar los terminos y condiciones", "Warning",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null, options, options[0]);
+					
+				}else if (opcion1.isSelected()){
+					frag4 = true;
 				}
+				
+				
+				if(frag1 && frag2 && frag3 && frag4) {
+					if(email.getText().equals("tilin@gmail.com")){
+						if(myPassword.equals("12345")) {
+							JOptionPane.showMessageDialog(null, "Sesion iniciada", "Login", JOptionPane.WARNING_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "Login", JOptionPane.WARNING_MESSAGE);	
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Correo Electronico incorrecto", "Login", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+				
+				
+				
+				
+				
 				
 				
 				
