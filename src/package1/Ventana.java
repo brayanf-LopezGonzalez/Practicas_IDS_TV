@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -41,7 +43,7 @@ public class Ventana extends JFrame{
 		this.setMaximumSize(new Dimension(800,800));
 		this.setMinimumSize(new Dimension(400,400));
 		
-//		this.add(this.login());
+		this.add(this.login());
 		this.repaint();
 	}
 	
@@ -228,10 +230,46 @@ public class Ventana extends JFrame{
 		inicioSesion.setFont(new Font("Corbel", Font.BOLD, 19));	
 		ventanaPanel.add(inicioSesion);
 		
+		inicioSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(usuario.getText().equals("")) {
+					usuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					usuario.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+				}
+				
+				if(email.getText().equals("")) {
+					email.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				} else {
+					email.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				String myPassword = new String (password.getPassword());
+				
+				if(myPassword.equals("")) {
+					password.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				} else {
+					password.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(opcion2.isSelected()) {
+					System.out.println("Debe aceptar los terminos y condiciones");
+				}
+				
+				
+				
+				
+				
+			}
+		});
+		
 		return ventanaPanel;
 	}
 
-	@Override
+	/*@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		
@@ -413,7 +451,7 @@ public class Ventana extends JFrame{
 		
 		
 		
-	}
+	}*/
 	
 	
 }

@@ -7,6 +7,8 @@ public class Main {
 		
 		Ventana Ventana = new Ventana();
 		
+		//ImagenMario ImagenMario = new ImagenMario();
+		
 		//Calculadora Calculadora = new Calculadora();
 		
 		//Interfaz Interfaz = new Interfaz();
