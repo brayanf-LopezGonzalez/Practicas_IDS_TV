@@ -44,7 +44,7 @@ public class Ventana extends JFrame{
 		this.setMaximumSize(new Dimension(800,800));
 		this.setMinimumSize(new Dimension(400,400));
 		
-		this.add(this.login());
+		//this.add(this.login());
 		this.repaint();
 	}
 	
@@ -66,7 +66,7 @@ public class Ventana extends JFrame{
 		etiqueta1.setSize(200,60);
 		//etiqueta1.setOpaque(true);
 		//etiqueta1.setBackground(Color.RED);
-		etiqueta1.setLocation(250, 30);
+		etiqueta1.setLocation(225, 30);
 		etiqueta1.setHorizontalAlignment(JLabel.CENTER);
 		etiqueta1.setFont(new Font("Corbel", Font.BOLD, 24));	
 		ventanaPanel.add(etiqueta1);
@@ -297,7 +297,7 @@ public class Ventana extends JFrame{
 		return ventanaPanel;
 	}
 
-	/*@Override
+	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		
@@ -479,7 +479,7 @@ public class Ventana extends JFrame{
 		
 		
 		
-	}*/
+	}
 	
 	
 }
