@@ -62,10 +62,6 @@ public class Interfaz extends JFrame{
 		//calcularInteres.setOpaque(true);
 		centro.add(calcularInteres,BorderLayout.NORTH);
 		
-//		JPanel espacioIzquierda = new JPanel();
-//		espacioIzquierda.setSize(new Dimension(400,400));
-//		espacioIzquierda.setOpaque(false);
-//		ventanaPanel.add(espacioIzquierda, BorderLayout.WEST);
 		ventanaPanel.add(espacio(),BorderLayout.WEST);
 		ventanaPanel.add(espacio(),BorderLayout.EAST);
 		

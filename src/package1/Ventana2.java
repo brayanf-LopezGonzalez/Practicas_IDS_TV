@@ -303,10 +303,6 @@ public class Ventana2 {
 		panel_1.add(panel_5);
 		panel_5.setLayout(null);
 		
-		
-		
-		
-		
 		JButton nuevoDocs = new JButton("Nuevo");
 		nuevoDocs.setForeground(new Color(255, 255, 255));
 		nuevoDocs.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -315,8 +311,7 @@ public class Ventana2 {
 		panel_5.add(nuevoDocs);
 		
 		ImageIcon icono_3 = new ImageIcon("imagenes/agregar.png");
-		Image imagenOriginal3 = icono_3.getImage();
-		Image escalable_3 = imagenOriginal3.getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+		Image escalable_3 = icono_3.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
 		nuevoDocs.setIcon(new ImageIcon(escalable_3));
 		
 		JButton guardarDocs = new JButton("Guardar");

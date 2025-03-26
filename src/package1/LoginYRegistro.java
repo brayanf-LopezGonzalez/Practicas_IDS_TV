@@ -2,11 +2,17 @@ package package1;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -22,12 +28,21 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JRadioButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JMenuItem;
 
 public class LoginYRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField_3;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -51,6 +66,25 @@ public class LoginYRegistro extends JFrame {
 	public LoginYRegistro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1158, 694);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setMargin(new Insets(10, 10, 10, 10));
+		setJMenuBar(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Menu");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Iniciar sesion");
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Registrarse");
+		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnNewMenu_1 = new JMenu("New menu");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenu mnNewMenu_2 = new JMenu("New menu");
+		menuBar.add(mnNewMenu_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -58,7 +92,7 @@ public class LoginYRegistro extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 0, 1138, 776);
+		panelPrincipal.setBounds(0, 0, 1144, 635);
 		contentPane.add(panelPrincipal);
 		panelPrincipal.setLayout(new CardLayout(0, 0));
 		
@@ -69,7 +103,7 @@ public class LoginYRegistro extends JFrame {
         panelPrincipal.add(registroPanel, "Registro");
 	}
 	
-	private JPanel crearPanelLogin() {
+	public JPanel crearPanelLogin() {
 		JPanel loginPanel = new JPanel();
 		
 		loginPanel.setBackground(new Color(162, 235, 251));
@@ -100,7 +134,6 @@ public class LoginYRegistro extends JFrame {
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setFont(new Font("Tahoma", Font.BOLD, 16));
-        passwordField.setEchoChar('*');
         passwordField.setBounds(44, 283, 354, 41);
         loginPanel.add(passwordField);
 
@@ -128,10 +161,36 @@ public class LoginYRegistro extends JFrame {
         JButton crearCuenta = new JButton("Crear cuenta");
         crearCuenta.setFont(new Font("Gill Sans MT", Font.BOLD, 18));
         crearCuenta.setBounds(125, 506, 187, 41);
+        
+        crearCuenta.addActionListener(new ActionListener(){
+        	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				router("registro");
+			}
+        });
         loginPanel.add(crearCuenta);
         
-        JPanel panel = new JPanel();
-        panel.setBounds(431, 10, 697, 632);
+        
+        JPanel panel = new JPanel() {
+        	@Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            
+	            Graphics2D g2d = (Graphics2D) g.create();
+	            
+	            try {
+	            	
+	                BufferedImage img = ImageIO.read(new File("imagenes/si.png"));
+	                g2d.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	               
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	            
+	        }
+        };
+        panel.setBounds(437, 10, 697, 615);
         loginPanel.add(panel);
         
         
@@ -143,7 +202,7 @@ public class LoginYRegistro extends JFrame {
 		return loginPanel;
 	}
 		
-	private JPanel crearPanelRegistro() {
+	public JPanel crearPanelRegistro() {
 		JPanel registroPanel = new JPanel();
 		
 		registroPanel.setBackground(new Color(255, 238, 185));
@@ -188,7 +247,7 @@ public class LoginYRegistro extends JFrame {
 
         JButton btnRegistrarse = new JButton("Registrarse");
         btnRegistrarse.setFont(new Font("Gill Sans MT", Font.BOLD, 18));
-        btnRegistrarse.setBounds(729, 570, 173, 41);
+        btnRegistrarse.setBounds(561, 575, 173, 41);
         registroPanel.add(btnRegistrarse);
         
         JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
@@ -203,7 +262,7 @@ public class LoginYRegistro extends JFrame {
         registroPanel.add(textField_3);
         
         JPanel panel = new JPanel();
-        panel.setBounds(490, 82, 315, 374);
+        panel.setBounds(490, 82, 315, 388);
         panel.setOpaque(false);
         panel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.GRAY));
         registroPanel.add(panel);
@@ -344,7 +403,7 @@ public class LoginYRegistro extends JFrame {
 		
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.setFont(new Font("Gill Sans MT", Font.BOLD, 18));
-		btnRegresar.setBounds(42, 595, 173, 41);
+		btnRegresar.setBounds(10, 584, 173, 41);
 		registroPanel.add(btnRegresar);
 		
 		ImageIcon icono_3 = new ImageIcon("imagenes/cancelar.png");
@@ -353,6 +412,70 @@ public class LoginYRegistro extends JFrame {
 		Image escalable_3 = imagenOriginal_3.getScaledInstance(35, 35, Image.SCALE_SMOOTH);
 		btnRegresar.setIcon(new ImageIcon(escalable_3));
 		
+		JButton btnTerminosYCondiciones = new JButton("Terminos y condiciones");
+		btnTerminosYCondiciones.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
+		btnTerminosYCondiciones.setBounds(537, 480, 232, 35);
+		registroPanel.add(btnTerminosYCondiciones);
+		
+		JRadioButton aceptarNewRadioButton = new JRadioButton("");
+		aceptarNewRadioButton.setFont(new Font("Gill Sans MT", Font.PLAIN, 12));
+		aceptarNewRadioButton.setBounds(511, 533, 21, 21);
+		aceptarNewRadioButton.setOpaque(false);
+		registroPanel.add(aceptarNewRadioButton);
+		
+		JRadioButton rechazarNewRadioButton_1 = new JRadioButton("");
+		rechazarNewRadioButton_1.setOpaque(false);
+		rechazarNewRadioButton_1.setFont(new Font("Gill Sans MT", Font.PLAIN, 12));
+		rechazarNewRadioButton_1.setBounds(713, 533, 21, 21);
+		registroPanel.add(rechazarNewRadioButton_1);
+		
+		ButtonGroup grupo1 = new ButtonGroup();	
+		grupo1.add(aceptarNewRadioButton);
+		grupo1.add(rechazarNewRadioButton_1);
+		
+		JLabel lblAceptar = new JLabel("Aceptar");
+		lblAceptar.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+		lblAceptar.setBounds(537, 536, 75, 18);
+		registroPanel.add(lblAceptar);
+		
+		JLabel lblLiteratura_1_1 = new JLabel("Rechazar");
+		lblLiteratura_1_1.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+		lblLiteratura_1_1.setBounds(737, 536, 75, 18);
+		registroPanel.add(lblLiteratura_1_1);
+		
+		JPanel panel_1 = new JPanel(){
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            Graphics2D g2d = (Graphics2D) g.create();
+	            
+	            try {
+	                BufferedImage img = ImageIO.read(new File("imagenes/imagen_fondo.jpg"));
+	                g2d.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    };
+		
+		panel_1.setBounds(837, 47, 286, 547);
+		registroPanel.add(panel_1);
+		
+		
+		
+		
 		return registroPanel;
+	}
+	
+	public void router(String route) {
+		this.getContentPane().removeAll();
+		
+		if(route.equals("registro")) {
+			getContentPane().add(this.crearPanelRegistro());
+		}
+		if(route.equals("login")) {
+			getContentPane().add(this.crearPanelLogin());
+		}
+		
 	}
 }
