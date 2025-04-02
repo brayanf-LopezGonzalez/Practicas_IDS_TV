@@ -46,6 +46,9 @@ public class InterfazPaint extends JFrame {
 	private Color colorPincel;
 	private String modoDibujo = "Pincel";
 	private JSlider slider;
+	private int diametroBorrador = 100;
+	private Point posicionBorrador = null;
+	private boolean borrando = false;
 
 	/**
 	 * Launch the application.
@@ -470,6 +473,12 @@ public class InterfazPaint extends JFrame {
             	    Point puntoClick = e.getPoint();
             	    float grosorActual = (float) slider.getValue();
             	    
+            	    if (modoDibujo.equals("borrador")) {
+            	        borrando = true;
+            	        posicionBorrador = e.getPoint();
+            	        trazos.add(new Trazo(Color.WHITE, diametroBorrador));
+            	    } 
+            	    
             	    switch (modoDibujo) {
             	    
             	        case "pincel":
@@ -497,6 +506,11 @@ public class InterfazPaint extends JFrame {
                 @Override
                 public void mouseReleased(MouseEvent e) {
                 	
+                	if (borrando) {
+                        borrando = false;
+                        posicionBorrador = null;
+                    }
+                	
                 	if (puntosActuales != null && !puntosActuales.isEmpty()) {
                 		
                         Trazo ultimoTrazo = trazos.get(trazos.size() - 1);
@@ -517,8 +531,15 @@ public class InterfazPaint extends JFrame {
                         puntosActuales.add(e.getPoint());
                         Trazo ultimoTrazo = trazos.get(trazos.size() - 1);
                         ultimoTrazo.puntos = new ArrayList<>(puntosActuales);
-                        repaint();
                     }
+                	
+                	if (modoDibujo.equals("borrador") && borrando) {
+                        posicionBorrador = e.getPoint();
+                        Trazo ultimoTrazo = trazos.get(trazos.size() - 1);
+                        ultimoTrazo.puntos.add(posicionBorrador);
+                    }
+                    repaint();
+                	
                 }
             });
         }
@@ -535,8 +556,15 @@ public class InterfazPaint extends JFrame {
             for (Trazo trazo : trazos) {
                 g2d.setColor(trazo.color);
                 g2d.setStroke(new BasicStroke(trazo.grosor));
-
-                if (trazo instanceof TrazoFigura) {
+                
+                int diametro = (int) trazo.grosor;
+                
+                if(trazo instanceof TrazoBorrador) {
+                	 g2d.setColor(Color.WHITE);
+                     for (Point punto : trazo.puntos) {
+                         g2d.fillOval(punto.x - diametro/2, punto.y - diametro/2, diametro, diametro);
+                     }
+            	}else if (trazo instanceof TrazoFigura) {
                     //dibujo de figuras
                     TrazoFigura figura = (TrazoFigura) trazo;
                     Point inicio = figura.puntoInicio;
@@ -598,6 +626,12 @@ public class InterfazPaint extends JFrame {
             this.puntoInicio = puntoInicio;
             this.ancho = ancho;
             this.alto = alto;
+        }
+    }
+    
+    private class TrazoBorrador extends Trazo {
+        TrazoBorrador(float grosor) {
+            super(Color.WHITE, grosor); // Color blanco fijo
         }
     }
     
