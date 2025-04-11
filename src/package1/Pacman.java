@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import java.awt.Color;
 
 public class Pacman implements KeyListener{
@@ -65,15 +67,6 @@ public class Pacman implements KeyListener{
 		frmPacmantilin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPacmantilin.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		try {
-	        InputStream pacmanIcon = getClass().getResourceAsStream("/icono.png");
-	        if (pacmanIcon != null) {
-	        	frmPacmantilin.setIconImage(ImageIO.read(pacmanIcon));
-	        }
-	    } catch (IOException e) {
-	    
-	    }
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 128, 0));
 		frmPacmantilin.getContentPane().add(panel, BorderLayout.NORTH);
@@ -106,6 +99,27 @@ public class Pacman implements KeyListener{
 		paredes.add(new Player(100, 330, 300, 5, Color.BLUE));
 		footer.add(reiniciar);
 		
+		int delay1 = 10;
+		ActionListener taskPerformer = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				update();
+				
+			}
+		};
+		new Timer(delay1, taskPerformer).start();
+		
+		int delayBoca = 200;
+		ActionListener animacionBoca = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bocaAbierta = !bocaAbierta;
+				
+			}
+		};
+		new Timer(delayBoca, animacionBoca).start();
 	}
 	
 	class DrawingPanel extends JPanel{
@@ -154,11 +168,9 @@ public class Pacman implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
 		keyCode = e.getKeyCode();
 		update();
-		bocaAbierta = !bocaAbierta;
-		tablero.repaint();
+		
 	}
 
 	@Override
@@ -248,6 +260,8 @@ public class Pacman implements KeyListener{
 	        	pacman.y = yAnterior;
 	        }
 		}
+		
+		tablero.repaint();
 	}
 
 }
