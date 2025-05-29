@@ -44,7 +44,7 @@ public class Ventana extends JFrame{
 		this.setMaximumSize(new Dimension(800,800));
 		this.setMinimumSize(new Dimension(400,400));
 		
-		//this.add(this.login());
+		this.add(this.login());
 		this.repaint();
 	}
 	
@@ -297,189 +297,189 @@ public class Ventana extends JFrame{
 		return ventanaPanel;
 	}
 
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-		
-		Graphics2D g2d = (Graphics2D) g.create();
-		g2d.setStroke(new BasicStroke(5));
-		
-//		g2d.drawRect(100, 100, 80, 80);
-//		g2d.setColor(Color.ORANGE);
-//		g2d.fillRect(120, 120, 80, 80);		
-//		g2d.setColor(Color.GREEN);
-//		g2d.setFont(new Font("American Typewriter", Font.BOLD,28));
-//		g2d.drawString("Eso tilin", 150, 200);
-//		g2d.setColor(Color.GREEN);
-//		g2d.drawLine(30, 30, 500, 500);
-//		g2d.setColor(Color.BLACK);
-//		g2d.fillArc(500, 100, 100, 100, 0, 180);
-//		g2d.setColor(Color.GREEN);
-//		g2d.drawArc(500, 100, 100, 100, 180, 180);
-//		g2d.setColor(Color.ORANGE);
-//		g2d.fillArc(505, 105, 90, 90, 0, 180);
-//	
-//		int[] xPoints1 = {550, 500, 600};
-//      int[] yPoints1 = {250, 300, 300};
-//		g2d.fillPolygon(xPoints1, yPoints1, 3);
+//	@Override
+//	public void paint(Graphics g) {
+//		super.paint(g);
 //		
-//		int[] xPoints2 = {520, 470, 570};
-//      int[] yPoints2 = {220, 270, 270};
-//      g2d.drawPolygon(xPoints2, yPoints2, 3);
-//        
-//      g2d.fillOval(100, 490, 200, 100);
-//      g2d.drawOval(80, 550, 100, 200);
-//      g2d.drawRoundRect(380, 500, 100, 100, 50, 50);
-//      g2d.setColor(Color.BLACK);
-//      g2d.fillRoundRect(420, 540, 100, 100, 50, 50);
-//      try {
-//      	BufferedImage imagen = ImageIO.read(new File("imagenes/si.png"));
-//        	g2d.drawImage(imagen, 400, 650, 100,100,this);
-//        	
-//      } catch (IOException e) {
-//      	e.printStackTrace();
-//      }
-		
-		g2d.setColor(Color.decode("#5C94FC"));//fondo
-		g2d.fillRect(0, 0, 800, 800);
-		
-		g2d.setColor(Color.decode("#f6bb5b"));//tierra
-		g2d.fillRect(0, 600, 800, 200);
-		
-		g2d.setColor(Color.decode("#a5d5f5"));//montañas
-		g2d.fillArc(80, 350, 120, 100, 0, 180);
-		g2d.fillRect(80, 400, 120, 200);
-		
-		g2d.fillArc(330, 350, 120, 100, 0, 180);
-		g2d.fillRect(330, 400, 120, 200);
-		
-		g2d.fillArc(450, 250, 120, 100, 0, 180);
-		g2d.fillRect(450, 300, 120, 300);
-		
-		g2d.setColor(Color.decode("#4674df"));// montañas oscuras
-		g2d.fillArc(-20, 450, 150, 100, 0, 180);
-		g2d.fillRect(-20, 500, 150, 100);
-		
-		g2d.fillArc(330, 450, 150, 100, 0, 180);
-		g2d.fillRect(330, 500, 150, 100);
-		
-		g2d.setColor(Color.WHITE);//nubes
-		g2d.fillArc(450, 420, 40, 30, 90, 180);
-		g2d.fillRect(470, 420, 100, 30);
-		
-		g2d.setColor(Color.decode("#4674df"));
-		g2d.fillArc(480, 400, 150, 100, 0, 180);
-		g2d.fillRect(480, 450, 150, 150);
-		
-		g2d.setColor(Color.WHITE);//nubes
-		
-		g2d.fillArc(570, 335, 40, 30, 90, 180);
-		g2d.fillRect(590, 335, 80, 30);
-		g2d.fillArc(650, 335, 40, 30, 270, 180);
-		
-		g2d.fillRect(570, 365, 70, 30);
-		g2d.fillArc(620, 365, 40, 30, 270, 180);
-		
-		g2d.fillRect(0, 400, 100, 30);
-		g2d.fillArc(80, 400, 40, 30, 270, 180);
-		
-		g2d.fillArc(200, 435, 40, 30, 90, 180);
-		g2d.fillRect(220, 435, 100, 30);
-		g2d.fillArc(300, 435, 40, 30, 270, 180);
-		
-		g2d.fillRect(200, 510, 50, 30);
-		g2d.fillArc(230, 510, 40, 30, 270, 180);
-		
-		g2d.fillArc(260, 490, 40, 30, 90, 180);
-		g2d.fillRect(280, 490, 50, 30);
-		
-		g2d.fillArc(260, 540, 40, 30, 90, 180);
-		g2d.fillRect(280, 540, 50, 30);
-		
-		
-		g2d.setColor(Color.decode("#63d833"));//pasto
-		int superiorX = 25;
-		int izquierdaX = 0;
-		int derechaX = 50;
-		int incrementoX = 50;	
-		int totalTriangulos = 16;
-		
-		
-		
-		for(int i = 0; i <= totalTriangulos; i++) {
-		
-			int[] puntosX = {superiorX, izquierdaX, derechaX};
-			int[] puntosY = {620, 600, 600};
-			g2d.fillPolygon(puntosX, puntosY, 3);
-			
-			superiorX+=incrementoX;
-			izquierdaX+=incrementoX;
-			derechaX+=incrementoX;
-			
-		}
-		
-		//cuadros
-		int anchoCuadroNegro = 50;
-		int altoCuadroNegro = 50;
-		int borde = 5;
-		int inicioX = 650;
-		int inicioY = 550;
-		int totalCuadros = 6;
-		
-		for (int i = 0; i < totalCuadros; i++) {
-			
-			if(i < 3) {
-	            g2d.setColor(Color.BLACK);
-	            g2d.fillRect(inicioX, inicioY, anchoCuadroNegro, altoCuadroNegro);
-	            
-	            g2d.setColor(Color.GRAY);
-	            g2d.fillRect (inicioX+borde, inicioY + borde, anchoCuadroNegro - 2 * borde, altoCuadroNegro - 2 * borde);
-	            
-	            inicioY -= altoCuadroNegro;
-			} else {
-				g2d.setColor(Color.BLACK);
-	            g2d.fillRect(inicioX, inicioY, anchoCuadroNegro, altoCuadroNegro);
-	            
-	            if(i >= 4) {
-	            	g2d.setColor(Color.YELLOW);
-	            } else {
-	            	g2d.setColor(Color.GRAY);
-	            }
-	            
-	            g2d.fillRect (inicioX+borde, inicioY + borde, anchoCuadroNegro - 2 * borde, altoCuadroNegro - 2 * borde);
-	            inicioX += anchoCuadroNegro;
-			}
-		}
-		
-		
-		try {
-			
-			BufferedImage imagen = ImageIO.read(new File("imagenes/marioInterfaz.png"));
-	        BufferedImage imagenTunel = ImageIO.read(new File("imagenes/tunel.png"));
-	        BufferedImage personajeMario = ImageIO.read(new File("imagenes/mario.png"));
-	        BufferedImage enemigoPlanta = ImageIO.read(new File("imagenes/plantaMario.png"));
-	        BufferedImage enemigoTortugaInsana = ImageIO.read(new File("imagenes/enemigoMario.png"));
-	      	
-	        g2d.drawImage(imagen, 50, 50, 690,100,this);
-	        g2d.drawImage(imagenTunel, 315, 462, 170, 170, this);
-	        g2d.drawImage(imagenTunel, 680, 429, 190, 210, this);
-	        g2d.drawImage(personajeMario, 160, 510, 90, 90, this);
-	        g2d.drawImage(enemigoPlanta, 360, 404, 80, 90, this);
-	        g2d.drawImage(enemigoTortugaInsana, 500, 509, 160, 100, this);
-	        	
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		g2d.setColor(Color.BLACK);
-		g2d.fillOval(715, 420, 6, 11);
-		g2d.fillOval(728, 420, 6, 11);
-		g2d.fillOval(765, 420, 6, 11);
-		g2d.fillOval(778, 420, 6, 11);
-		
-		
-		
-	}
+//		Graphics2D g2d = (Graphics2D) g.create();
+//		g2d.setStroke(new BasicStroke(5));
+//		
+////		g2d.drawRect(100, 100, 80, 80);
+////		g2d.setColor(Color.ORANGE);
+////		g2d.fillRect(120, 120, 80, 80);		
+////		g2d.setColor(Color.GREEN);
+////		g2d.setFont(new Font("American Typewriter", Font.BOLD,28));
+////		g2d.drawString("Eso tilin", 150, 200);
+////		g2d.setColor(Color.GREEN);
+////		g2d.drawLine(30, 30, 500, 500);
+////		g2d.setColor(Color.BLACK);
+////		g2d.fillArc(500, 100, 100, 100, 0, 180);
+////		g2d.setColor(Color.GREEN);
+////		g2d.drawArc(500, 100, 100, 100, 180, 180);
+////		g2d.setColor(Color.ORANGE);
+////		g2d.fillArc(505, 105, 90, 90, 0, 180);
+////	
+////		int[] xPoints1 = {550, 500, 600};
+////      int[] yPoints1 = {250, 300, 300};
+////		g2d.fillPolygon(xPoints1, yPoints1, 3);
+////		
+////		int[] xPoints2 = {520, 470, 570};
+////      int[] yPoints2 = {220, 270, 270};
+////      g2d.drawPolygon(xPoints2, yPoints2, 3);
+////        
+////      g2d.fillOval(100, 490, 200, 100);
+////      g2d.drawOval(80, 550, 100, 200);
+////      g2d.drawRoundRect(380, 500, 100, 100, 50, 50);
+////      g2d.setColor(Color.BLACK);
+////      g2d.fillRoundRect(420, 540, 100, 100, 50, 50);
+////      try {
+////      	BufferedImage imagen = ImageIO.read(new File("imagenes/si.png"));
+////        	g2d.drawImage(imagen, 400, 650, 100,100,this);
+////        	
+////      } catch (IOException e) {
+////      	e.printStackTrace();
+////      }
+//		
+//		g2d.setColor(Color.decode("#5C94FC"));//fondo
+//		g2d.fillRect(0, 0, 800, 800);
+//		
+//		g2d.setColor(Color.decode("#f6bb5b"));//tierra
+//		g2d.fillRect(0, 600, 800, 200);
+//		
+//		g2d.setColor(Color.decode("#a5d5f5"));//montañas
+//		g2d.fillArc(80, 350, 120, 100, 0, 180);
+//		g2d.fillRect(80, 400, 120, 200);
+//		
+//		g2d.fillArc(330, 350, 120, 100, 0, 180);
+//		g2d.fillRect(330, 400, 120, 200);
+//		
+//		g2d.fillArc(450, 250, 120, 100, 0, 180);
+//		g2d.fillRect(450, 300, 120, 300);
+//		
+//		g2d.setColor(Color.decode("#4674df"));// montañas oscuras
+//		g2d.fillArc(-20, 450, 150, 100, 0, 180);
+//		g2d.fillRect(-20, 500, 150, 100);
+//		
+//		g2d.fillArc(330, 450, 150, 100, 0, 180);
+//		g2d.fillRect(330, 500, 150, 100);
+//		
+//		g2d.setColor(Color.WHITE);//nubes
+//		g2d.fillArc(450, 420, 40, 30, 90, 180);
+//		g2d.fillRect(470, 420, 100, 30);
+//		
+//		g2d.setColor(Color.decode("#4674df"));
+//		g2d.fillArc(480, 400, 150, 100, 0, 180);
+//		g2d.fillRect(480, 450, 150, 150);
+//		
+//		g2d.setColor(Color.WHITE);//nubes
+//		
+//		g2d.fillArc(570, 335, 40, 30, 90, 180);
+//		g2d.fillRect(590, 335, 80, 30);
+//		g2d.fillArc(650, 335, 40, 30, 270, 180);
+//		
+//		g2d.fillRect(570, 365, 70, 30);
+//		g2d.fillArc(620, 365, 40, 30, 270, 180);
+//		
+//		g2d.fillRect(0, 400, 100, 30);
+//		g2d.fillArc(80, 400, 40, 30, 270, 180);
+//		
+//		g2d.fillArc(200, 435, 40, 30, 90, 180);
+//		g2d.fillRect(220, 435, 100, 30);
+//		g2d.fillArc(300, 435, 40, 30, 270, 180);
+//		
+//		g2d.fillRect(200, 510, 50, 30);
+//		g2d.fillArc(230, 510, 40, 30, 270, 180);
+//		
+//		g2d.fillArc(260, 490, 40, 30, 90, 180);
+//		g2d.fillRect(280, 490, 50, 30);
+//		
+//		g2d.fillArc(260, 540, 40, 30, 90, 180);
+//		g2d.fillRect(280, 540, 50, 30);
+//		
+//		
+//		g2d.setColor(Color.decode("#63d833"));//pasto
+//		int superiorX = 25;
+//		int izquierdaX = 0;
+//		int derechaX = 50;
+//		int incrementoX = 50;	
+//		int totalTriangulos = 16;
+//		
+//		
+//		
+//		for(int i = 0; i <= totalTriangulos; i++) {
+//		
+//			int[] puntosX = {superiorX, izquierdaX, derechaX};
+//			int[] puntosY = {620, 600, 600};
+//			g2d.fillPolygon(puntosX, puntosY, 3);
+//			
+//			superiorX+=incrementoX;
+//			izquierdaX+=incrementoX;
+//			derechaX+=incrementoX;
+//			
+//		}
+//		
+//		//cuadros
+//		int anchoCuadroNegro = 50;
+//		int altoCuadroNegro = 50;
+//		int borde = 5;
+//		int inicioX = 650;
+//		int inicioY = 550;
+//		int totalCuadros = 6;
+//		
+//		for (int i = 0; i < totalCuadros; i++) {
+//			
+//			if(i < 3) {
+//	            g2d.setColor(Color.BLACK);
+//	            g2d.fillRect(inicioX, inicioY, anchoCuadroNegro, altoCuadroNegro);
+//	            
+//	            g2d.setColor(Color.GRAY);
+//	            g2d.fillRect (inicioX+borde, inicioY + borde, anchoCuadroNegro - 2 * borde, altoCuadroNegro - 2 * borde);
+//	            
+//	            inicioY -= altoCuadroNegro;
+//			} else {
+//				g2d.setColor(Color.BLACK);
+//	            g2d.fillRect(inicioX, inicioY, anchoCuadroNegro, altoCuadroNegro);
+//	            
+//	            if(i >= 4) {
+//	            	g2d.setColor(Color.YELLOW);
+//	            } else {
+//	            	g2d.setColor(Color.GRAY);
+//	            }
+//	            
+//	            g2d.fillRect (inicioX+borde, inicioY + borde, anchoCuadroNegro - 2 * borde, altoCuadroNegro - 2 * borde);
+//	            inicioX += anchoCuadroNegro;
+//			}
+//		}
+//		
+//		
+//		try {
+//			
+//			BufferedImage imagen = ImageIO.read(new File("imagenes/marioInterfaz.png"));
+//	        BufferedImage imagenTunel = ImageIO.read(new File("imagenes/tunel.png"));
+//	        BufferedImage personajeMario = ImageIO.read(new File("imagenes/mario.png"));
+//	        BufferedImage enemigoPlanta = ImageIO.read(new File("imagenes/plantaMario.png"));
+//	        BufferedImage enemigoTortugaInsana = ImageIO.read(new File("imagenes/enemigoMario.png"));
+//	      	
+//	        g2d.drawImage(imagen, 50, 50, 690,100,this);
+//	        g2d.drawImage(imagenTunel, 315, 462, 170, 170, this);
+//	        g2d.drawImage(imagenTunel, 680, 429, 190, 210, this);
+//	        g2d.drawImage(personajeMario, 160, 510, 90, 90, this);
+//	        g2d.drawImage(enemigoPlanta, 360, 404, 80, 90, this);
+//	        g2d.drawImage(enemigoTortugaInsana, 500, 509, 160, 100, this);
+//	        	
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		g2d.setColor(Color.BLACK);
+//		g2d.fillOval(715, 420, 6, 11);
+//		g2d.fillOval(728, 420, 6, 11);
+//		g2d.fillOval(765, 420, 6, 11);
+//		g2d.fillOval(778, 420, 6, 11);
+//		
+//		
+//		
+//	}
 	
 	
 }

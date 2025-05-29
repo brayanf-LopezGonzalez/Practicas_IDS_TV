@@ -378,7 +378,7 @@ public class Pacman implements KeyListener{
 	}
 	
 	private void timers() {
-		int delay1 = 3;
+		int delay1 = 1;
 		ActionListener taskPerformer = new ActionListener() {
 			
 			@Override

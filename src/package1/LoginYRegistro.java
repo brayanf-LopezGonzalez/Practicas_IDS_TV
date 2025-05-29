@@ -476,6 +476,7 @@ public class LoginYRegistro extends JFrame {
 		if(route.equals("login")) {
 			getContentPane().add(this.crearPanelLogin());
 		}
+		repaint();
 		
 	}
 }
